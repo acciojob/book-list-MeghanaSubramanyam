@@ -1,10 +1,7 @@
-
 <!DOCTYPE html>
-
 <html>
   <head>
     <style>
-      /*  your css code here. If applicable */
       body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
@@ -81,7 +78,6 @@
   </head>
 
   <body>
-    <!-- the entire body must be written by student -->
     <h1>My<span>Book</span>List</h1>
 
     <div class="form-group">
@@ -125,26 +121,28 @@
         const row = document.createElement("tr");
 
         row.innerHTML = `
-		<td>${title}</td>
-		<td>${author}</td>
-		<td>${isbn}</td>
-		<td><button class="delete">X</button></td>
-	`;
+          <td>${title}</td>
+          <td>${author}</td>
+          <td>${isbn}</td>
+          <td><button class="delete">X</button></td>
+        `;
 
         bookList.appendChild(row);
 
+        // Clear input fields after adding a book
         titleInput.value = "";
         authorInput.value = "";
         isbnInput.value = "";
+      });
 
-        bookList.addEventListener("click", (e) => {
-          if (e.target.classList.contains("delete")) {
-            if (confirm("Are you sure you want to remove this book?")) {
-              const row = e.target.parentElement.parentElement;
-              bookList.removeChild(row);
-            }
+      // Event delegation for delete buttons
+      bookList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete")) {
+          if (confirm("Are you sure you want to remove this book?")) {
+            const row = e.target.parentElement.parentElement;
+            bookList.removeChild(row); // This should work correctly now
           }
-        });
+        }
       });
     </script>
   </body>
